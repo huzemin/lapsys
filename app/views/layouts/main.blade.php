@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    @yield('styleload')
     <!--[if lt IE 9]>
       <script src="/js/html5shiv.min.js"></script>
       <script src="/js/respond.min.js"></script>
@@ -14,5 +15,6 @@
 <body>
     @yield('content')
     <script type="text/javascript" src="/js/jquery.min.js"></script>
+    @yield('jsload')
 </body>
 </html>
