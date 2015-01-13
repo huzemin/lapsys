@@ -13,10 +13,23 @@
 
 Route::get('/', function()
 {
-    return View::make("html.index");
+    return View::make("hello");
 })->before('auth');
 
-// 用户登陆路由
-Route::get('login', 'UserController@showLogin');
+ // 用户登陆路由组
+Route::group(array('before'=>'guest'), function(){
+    Route::post('login', array('as'=>'login','uses'=>'UserController@doLogin'));
+    Route::get('login', 'UserController@showLogin');
 
-Route::post('login', array('as'=>'login','uses'=>'UserController@doLogin'));
+    Route::get('register', 'UserController@showRegister');
+    Route::post('register', array('as'=>'register','uses'=>'UserController@doRegister'));
+});
+
+Route::group(array('before'=>'auth'), function(){
+    Route::get('logout', 'UserController@doLogout')->before('auth');
+});
+
+Route::get('db',function(){
+    
+    return lang('test.website');
+});

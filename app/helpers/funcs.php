@@ -37,3 +37,9 @@ if(!function_exists('pf')) {
         }
     }
 }
+
+if(!function_exists('lang')) {
+    function lang($key, Array $replace = array()) {
+        return Lang::get($key, $replace);
+    }
+}

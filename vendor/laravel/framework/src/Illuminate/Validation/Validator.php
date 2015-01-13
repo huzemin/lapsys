@@ -365,6 +365,11 @@ class Validator implements MessageProviderInterface {
 	{
 		$this->addError($attribute, $rule, $parameters);
 
+		// Fixed the error: the attributes do not be translate. by zemin @2015-01-13
+		if($this->translator->has("formfields.$attribute")) {
+			$attribute = $this->translator->get("formfields.$attribute");
+		}
+
 		$this->failedRules[$attribute][$rule] = $parameters;
 	}
 
@@ -379,7 +384,11 @@ class Validator implements MessageProviderInterface {
 	protected function addError($attribute, $rule, $parameters)
 	{
 		$message = $this->getMessage($attribute, $rule);
-
+		
+		// Fixed the error: the attributes do not be translate. by zemin @2015-01-13
+		if($this->translator->has("formfields.$attribute")) {
+			$attribute = $this->translator->get("formfields.$attribute");
+		}
 		$message = $this->doReplacements($message, $attribute, $rule, $parameters);
 
 		$this->messages->add($attribute, $message);
