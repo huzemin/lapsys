@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('styleload')
+  <link rel="stylesheet" href="{{ asset('css/validform.css') }}" />
+@stop
+
 @section('content')
 <!-- 登陆界面 -->
 <div class="container">
@@ -16,19 +20,19 @@
                 {{ Form::open(array('url'=>URL::route("register"),'method'=>'post','class'=>'form','role'=>'form'))}}
                  <div class="form-group">
                     <label class="sr-only" for="email">邮箱</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="电子邮箱" value="{{ Input::old('email') }}">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="电子邮箱" value="{{ Input::old('email') }}" datatype="e" ajaxurl="{{route('ucheck')}}">
                   </div>
                   <div class="form-group">
                     <label class="sr-only" for="username">用户名</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="用户名" value="{{ Input::old('username') }}">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="用户名" value="{{ Input::old('username') }}" datatype="*3-20"  ajaxurl="{{route('ucheck')}}">
                   </div>
                   <div class="form-group">
                     <label class="sr-only" for="password">密码</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="密码">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密码" datatype="*6-20">
                   </div>
                   <div class="form-group">
                     <label class="sr-only" for="password_confirmation">确认密码</label>
-                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="确认密码">
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="确认密码" datatype="*3-20" recheck="password">
                   </div>
                   <button type="submit" class="btn btn-info btn-block">注册</button>
                 {{Form::close()}}
@@ -40,4 +44,17 @@
         </div>
     </div>
 </div>
+@stop
+
+@section('jsload')
+<script type="text/javascript" src="{{ asset('js/Validform.min.js') }}"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('form').Validform({
+        label:"label",
+        showAllError:true,
+        tiptype:5
+      });
+  });
+</script>
 @stop

@@ -1,3 +1,7 @@
+
+<?php $__env->startSection('styleload'); ?>
+  <link rel="stylesheet" href="<?php echo asset('css/validform.css'); ?>" />
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <!-- 登陆界面 -->
 <div class="container">
@@ -12,14 +16,19 @@
                     <p class="alert alert-danger"><i class="glyphicon glyphicon-warning-sign"></i><?php echo $error; ?></p>
                 <?php endforeach; ?>
                 <?php echo Form::open(array('url'=>URL::route("login"),'method'=>'post','class'=>'form','role'=>'form')); ?>
-                <form class="form" role="form" method="post" action="<?php echo URL::route('login'); ?>">
                   <div class="form-group">
                     <label class="sr-only" for="username">用户名</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="用户名" value="<?php echo Input::old('username'); ?>">
+                    <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="用户名" value="<?php echo Input::old('username'); ?>" datatype="s3-20">
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="sr-only" for="password">密码</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="密码">
+                    <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密码" datatype="s6-20">
+                    </div>
                   </div>
                   <div class="checkbox">
                     <label>
@@ -29,12 +38,25 @@
                   <button type="submit" class="btn btn-primary btn-block">登陆</button>
                 <?php echo Form::close(); ?>
                   <div>
-                        <p class="p1">尚未注册账号? <a href="#">注册</a></p>
+                        <p class="p1">尚未注册账号? <a href="<?php echo action('UserController@showRegister'); ?>">注册</a></p>
                   </div>
               </div>
             </div>
         </div>
     </div>
 </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('jsload'); ?>
+<script type="text/javascript" src="<?php echo asset('js/Validform.min.js'); ?>"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('form').Validform({
+        label:"label",
+        showAllError:true,
+        tiptype:5
+      });
+  });
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

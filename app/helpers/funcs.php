@@ -43,3 +43,13 @@ if(!function_exists('lang')) {
         return Lang::get($key, $replace);
     }
 }
+
+if(!function_exists('valid_email')) {
+    function valid_email($email_str) {
+        $preg = "#^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$#";
+        if(preg_match($preg, $email_str)) {
+            return true;
+        }
+        return false;
+    }
+}

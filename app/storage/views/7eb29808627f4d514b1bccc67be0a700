@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <title><?php if($pagetitle): ?> <?php echo $pagetitle; ?> <?php else: ?> Project <?php endif; ?> </title>
+    <title><?php if(!empty($pagetitle)): ?> <?php echo $pagetitle; ?> <?php else: ?> Project <?php endif; ?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-select.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    <?php echo $__env->yieldContent('styleload'); ?>
     <!--[if lt IE 9]>
       <script src="/js/html5shiv.min.js"></script>
       <script src="/js/respond.min.js"></script>
@@ -13,6 +15,11 @@
 </head>
 <body>
     <?php echo $__env->yieldContent('content'); ?>
+    <!-- Load JS -->
     <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-select/bootstrap-select.js"></script>
+    <script type="text/javascript" src="/js/common/run.js"></script>
+    <?php echo $__env->yieldContent('jsload'); ?>
 </body>
 </html>

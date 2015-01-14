@@ -19,11 +19,17 @@
                 {{ Form::open(array('url'=>URL::route("login"),'method'=>'post','class'=>'form','role'=>'form'))}}
                   <div class="form-group">
                     <label class="sr-only" for="username">用户名</label>
+                    <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
                     <input type="text" class="form-control" id="username" name="username" placeholder="用户名" value="{{ Input::old('username') }}" datatype="s3-20">
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="sr-only" for="password">密码</label>
+                    <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
                     <input type="password" class="form-control" id="password" name="password" placeholder="密码" datatype="s6-20">
+                    </div>
                   </div>
                   <div class="checkbox">
                     <label>
@@ -43,13 +49,13 @@
 @stop
 
 @section('jsload')
-<script type="text/javascript" src="{{ asset('js/Validform_v5.3.2_min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/Validform.min.js') }}"></script>
 <script type="text/javascript">
   $(document).ready(function(){
       $('form').Validform({
         label:"label",
         showAllError:true,
-        tiptype:3
+        tiptype:5
       });
   });
 </script>
