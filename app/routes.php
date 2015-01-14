@@ -28,7 +28,14 @@ Route::group(array('before'=>'guest'), function(){
 
 // 检查授权(登陆后可以访问)
 Route::group(array('before'=>'auth'), function(){
-    Route::get('logout', 'UserController@doLogout')->before('auth');
+    Route::get('logout', 'UserController@doLogout');
+});
+
+// 后台管理
+Route::group(array('before'=>'auth','prefix'=>'admin'), function(){
+    Route::get('/', function(){
+        return View::make('html.home');
+    });
 });
 
 // 不通过过滤器

@@ -53,7 +53,7 @@
           </div>
           <div class="form-group">
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
+                    <input type='text' class="form-control" data-date-format="YYYY/MM/DD" />
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
@@ -70,6 +70,7 @@
 </div>
 </div>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.enplaceholder.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/jquery.bootstrap-growl.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap-select/bootstrap-select.js"></script>
@@ -81,7 +82,7 @@
 <script type="text/javascript" src="/js/common/run.js"></script>
 <script type="text/javascript">
             $(function () {
-                $('#datetimepicker1').datetimepicker({language:'zh-cn'});
+                $('#datetimepicker1').datetimepicker({language:'zh-cn',pickTime:false});
             });
         </script>
 </body>
