@@ -17,6 +17,7 @@
     <?php echo $__env->yieldContent('content'); ?>
     <!-- Load JS -->
     <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.enplaceholder.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap-select/bootstrap-select.js"></script>
     <script type="text/javascript" src="/js/common/run.js"></script>
