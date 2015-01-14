@@ -247,6 +247,11 @@
 						$(this).parent().append("<span class='Validform_checktip' />");
 						$(this).parent().next().find(".Validform_checktip").remove();
 					}
+				} else if(tiptype == 5) {
+					if($(this).parents('.form-group').find(".Validform_checktip").length==0){
+				          $(this).parents('.form-group').append("<span class='Validform_checktip' />");
+				          $(this).parents('.form-group').next().find(".Validform_checktip").remove();
+				      }
 				}
 			})
 			
@@ -715,22 +720,37 @@
 				o.obj.siblings(".Validform_checktip").html(msg);
 				Validform.util.cssctl(o.obj.siblings(".Validform_checktip"),o.type);
 			}
-
+			if(type == 5 && o.obj) {
+				o.obj.parents('.form-group').find(".Validform_checktip").html(msg);
+      			Validform.util.cssctl(o.obj.parents('.form-group').find(".Validform_checktip"), o.type, type);
+			}
 		},
 
-		cssctl:function(obj,status){
+		cssctl:function(obj,status,type){
 			switch(status){
 				case 1:
 					obj.removeClass("Validform_right Validform_wrong").addClass("Validform_checktip Validform_loading");//checking;
+					if(type == 5 || obj.parents('.form-group').find('.input-group-addon').length > 0) {
+						obj.parents('.form-group').find('.input-group-addon').removeClass('_Validform_error').addClass('_Validform_right');
+					}
 					break;
 				case 2:
 					obj.removeClass("Validform_wrong Validform_loading").addClass("Validform_checktip Validform_right");//passed;
+					if(type == 5 || obj.parents('.form-group').find('.input-group-addon').length > 0) {
+						obj.parents('.form-group').find('.input-group-addon').removeClass('_Validform_error').addClass('_Validform_right');
+					}
 					break;
 				case 4:
 					obj.removeClass("Validform_right Validform_wrong Validform_loading").addClass("Validform_checktip");//for ignore;
+					if(type == 5 || obj.parents('.form-group').find('.input-group-addon').length > 0) {
+						obj.parents('.form-group').find('.input-group-addon').removeClass('_Validform_right _Validform_error');
+					}
 					break;
 				default:
 					obj.removeClass("Validform_right Validform_loading").addClass("Validform_checktip Validform_wrong");//wrong;
+					if(type == 5 && obj.parents('.form-group').find('.input-group-addon').length > 0) {
+						obj.parents('.form-group').find('.input-group-addon').removeClass('_Validform_right').addClass('_Validform_error');
+					}
 			}
 		},
 		
