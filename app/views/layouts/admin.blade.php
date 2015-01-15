@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-select.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/poshytip/tip-twitter/tip-twitter.css"/>
     @yield('styleload','')
     <link rel="stylesheet" type="text/css" href="/css/layouts/adminstyle.css"/>

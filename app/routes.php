@@ -42,6 +42,21 @@ Route::group(array('before'=>'auth|admin','prefix'=>'admin'), function(){
 // api不通过过滤器
 Route::post('api/ucheck',array('as'=>'ucheck','uses'=>'UserController@checkValid')); // 检查用户邮箱是否可用
 
-Route::get('db', function(){
+Route::get('upload', function(){
+    if(Input::file())
+        dd(Input::file("file"));
+    return View::make('html.upload');
+});
 
+Route::get('db',function(){
+    dd(date('Y-m-d H:i:s'));
+    return View::make('html.index');
+});
+
+Route::post('upload', function(){
+    $file = Input::file('file');
+    if($file) {
+        $file->move('uploads/test',$file->getClientOriginalName());
+    }
+    return View::make('html.upload');
 });

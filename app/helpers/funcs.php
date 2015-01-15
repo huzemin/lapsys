@@ -6,7 +6,7 @@ if(!function_exists('get_client_ip')) {
      * @return string
      */
     function get_client_ip() {
-        return Request::server('REMOTE_ADDR','Unknown');
+        return Request::getClientIp();
     }
 }
 

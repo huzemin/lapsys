@@ -38,6 +38,11 @@ border-left-color: #5bc0de;
     margin-top: -5px;
 }
 
+.center{
+    text-align: center;
+    margin: 0 auto;
+}
+
 /*=================================
  * 登陆界面部分样式开始
  * ===============================*/

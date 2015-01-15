@@ -40,8 +40,14 @@ class UserController extends BaseController {
                 if($_user->isAdmin()) {
                     $remember = Config::get('web.admin.remember', false);
                 }
+                //dd($_user->updated_at);
+                Session::set('last_login_time', $_user->updated_at->toDateTimeString());
+                Session::set('last_login_ip', $_user->loginip);
                  // 用户存在
                 if(Auth::attempt($credentials, $remember)) {
+                    $_user->loginnum += 1;
+                    $_user->loginip = get_client_ip();
+                    $_user->save();
                     if($_user->isAdmin()) {
                         return Redirect::route('admin');
                     }
@@ -53,6 +59,8 @@ class UserController extends BaseController {
             } else {
                 $errors = array('login'=>'用户不存在!');
             }
+            Session::forget('last_login_time');
+            Session::forget('last_login_ip');
             return Redirect::to("login")->withErrors($errors)->withInput(Input::except('password'));
         }
     }
@@ -140,5 +148,22 @@ class UserController extends BaseController {
 
     // 用户列表
     public function usersList() {
+        // 关键词搜索
+        $keyword = Input::get('keyword','');
+        if(!empty($keyword)) {
+          $Euser = $this->user->where('username','like',"%$keyword%")->orWhere('email','like',"%$keyword%")->orWhere('name','like',"%$keyword%");
+        } else {
+           $Euser = $this->user;
+        }
+
+        $users = $Euser->orderBy('isadmin','desc')->orderBy('created_at','desc')->paginate(15);
+
+        // 分页参数添加自定义信息
+        if(!empty($keyword)) {
+            $users->appends(array('keyword' => $keyword));
+        }
+        $this->gdata['users'] = $users;
+        $this->gdata['total'] = $users->getTotal();
+        return View::make('admin.userslist', $this->gdata)->with(array('keyword'=>$keyword));
     }
 }

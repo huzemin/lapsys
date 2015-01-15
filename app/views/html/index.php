@@ -81,9 +81,9 @@
 <script type="text/javascript" src="/js/common/funcs.js"></script>
 <script type="text/javascript" src="/js/common/run.js"></script>
 <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker({language:'zh-cn',pickTime:false});
-            });
-        </script>
+    $(function () {
+        $('#datetimepicker1').datetimepicker({language:'zh-cn',pickTime:false});
+    });
+</script>
 </body>
 </html>
