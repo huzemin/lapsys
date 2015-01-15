@@ -13,8 +13,8 @@
 
 Route::get('/', function()
 {
-    return View::make("html.index");
-})->before('auth');
+    return View::make('hello');
+});
 
  // 用户登陆路由组
 Route::group(array('before'=>'guest'), function(){
@@ -28,18 +28,20 @@ Route::group(array('before'=>'guest'), function(){
 
 // 检查授权(登陆后可以访问)
 Route::group(array('before'=>'auth'), function(){
-    Route::get('logout', 'UserController@doLogout');
+    Route::get('logout', array('use'=>'logout','uses'=>'UserController@doLogout'));
 });
 
 // 后台管理
-Route::group(array('before'=>'auth','prefix'=>'admin'), function(){
-    Route::get('/', function(){
-        return View::make('html.home');
-    });
+Route::group(array('before'=>'auth|admin','prefix'=>'admin'), function(){
+    Route::get('/', array('as'=>'admin', 'uses'=>'AdminController@showHome'));
+    // 用户列表
+    Route::get('/users', array('as'=>'admin_users_list','uses'=>'UserController@usersList'));
+
 });
 
-// 不通过过滤器
+// api不通过过滤器
 Route::post('api/ucheck',array('as'=>'ucheck','uses'=>'UserController@checkValid')); // 检查用户邮箱是否可用
 
-Route::get('db',function(){
+Route::get('db', function(){
+
 });

@@ -15,4 +15,15 @@ class BaseController extends Controller {
 		}
 	}
 
+	// 全局初始化
+	public function getGdata() {
+		$gdata = array(
+			'client_ip' => get_client_ip()
+		);
+		if(Auth::check()) {
+			$gdata['uname'] = Auth::user()->name ? Auth::user()->name: Auth::user()->username;
+			$gdata['ulogo'] = Auth::user()->image;
+		}
+		return $gdata;
+	}
 }

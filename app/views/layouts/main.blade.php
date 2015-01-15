@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <title>@if(!empty($pagetitle)) {{$pagetitle}} @else Project @endif</title>
+    <title>@if(!empty($pagetitle)) {{$pagetitle}} @else {{ Config::get('web.frontend.website') }} @endif</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />

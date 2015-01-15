@@ -61,6 +61,17 @@ Route::filter('guest', function()
         return Redirect::to('/');
 });
 
+// 判断用户是否有权限进入管理后台
+Route::filter('admin', function(){
+	if(Auth::check()) {
+		// 判断是否为管理员
+		if(!Auth::user()->isAdmin()) {
+			return View::make('admin.forbidden');
+		}
+	} else {
+		return Redirect::to('login');
+	}
+});
 /*
 |--------------------------------------------------------------------------
 | CSRF Protection Filter

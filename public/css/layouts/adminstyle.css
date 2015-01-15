@@ -34,19 +34,41 @@ background-color: #1D1E1E;
     color: #fff;
     background-color: #1D1E1E;
 }
-.container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse{
-    margin: 0;
-    padding: 0;
-}
 .sidenav-toggle {
     float: right;
     height: 50px;
     padding: 15px 15px;
     font-size: 18px;
     line-height: 20px;
+    color:gray;
+}
+.dropdown .fa{
+    padding-right:5px;
 }
 .navbar-brand span{
     padding-left: 10px
+}
+
+#user-logo{
+    padding: 5px;
+    margin: 0;
+}
+
+#user-logo img{
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    box-shadow:-1px 1px 2px #FFFFFF,1px -1px 2px #fff;
+}
+#user-logo img:hover{
+    -moz-transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    -otransition-duration: 1s;
+    transition-duration: 1s;
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
 }
 /*======= 左边栏 =======  */
 .side-bar{

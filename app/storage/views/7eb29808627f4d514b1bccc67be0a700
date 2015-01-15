@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <title><?php if(!empty($pagetitle)): ?> <?php echo $pagetitle; ?> <?php else: ?> Project <?php endif; ?></title>
+    <title><?php if(!empty($pagetitle)): ?> <?php echo $pagetitle; ?> <?php else: ?> <?php echo Config::get('web.frontend.website'); ?> <?php endif; ?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />

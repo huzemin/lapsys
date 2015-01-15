@@ -1,9 +1,7 @@
 @extends('layouts.main')
-
 @section('styleload')
   <link rel="stylesheet" href="{{ asset('css/validform.css') }}" />
 @stop
-
 @section('content')
 <!-- 登陆界面 -->
 <div class="container">

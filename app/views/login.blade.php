@@ -14,8 +14,11 @@
               </div>
               <div class="panel-body">
                 @foreach($errors->all() as $error)
-                    <p class="alert alert-danger"><i class="glyphicon glyphicon-warning-sign"></i>{{$error}}</p>
+                  <p class="alert alert-danger"><i class="glyphicon glyphicon-warning-sign"></i>{{$error}}</p>
                 @endforeach
+                @if(Session::get('regmsg'))
+                  <p class="alert alert-success"><i class="fa fa-check"></i>{{Session::get('regmsg')}}</p>
+                @endif
                 {{ Form::open(array('url'=>URL::route("login"),'method'=>'post','class'=>'form','role'=>'form'))}}
                   <div class="form-group">
                     <label class="sr-only" for="username">用户名</label>
