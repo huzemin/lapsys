@@ -1,0 +1,23 @@
+README
+
+These files contain various examples for using the PHP 
+Thumb library.  Feel free to do with them what you'd like.
+
+NOTE: The test images contained within are not my work.  
+DO NOT REDISTRIBUTE OR USE THESE IMAGES OUTSIDE THE SAMPLES.  
+If you are the owner of the images contained within, let me 
+know so I can properly credit you or remove the images at 
+your request.
+
+
+crop_basic.PHP				截取一部分（从左上角截取）
+crop_basic_fromstring.PHP	
+crop_fromcenter.PHP			截取一部分（从中心截取）
+reflection.PHP				缩小至合适大小、截取、添加倒影
+remote_image_resize.PHP		远程图片
+resize_adaptive.PHP			缩小至合适大小、截取
+resize_basic.PHP			缩小，保持高宽比
+resize_percentage.PHP		缩小至原图的百分比
+rotate_advanced.PHP			旋转，任意角度
+rotate_basic.PHP			旋转，四个角度
+save_differentformat.PHP	缩小至合适大小、截取、以其他格式存储

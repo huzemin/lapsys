@@ -17,6 +17,7 @@ ClassLoader::addDirectories(array(
 	app_path().'/controllers',
 	app_path().'/models',
 	app_path().'/database/seeds',
+    app_path().'/libraries'
 
 ));
 
@@ -77,6 +78,8 @@ App::down(function()
 | definitions instead of putting them all in the main routes file.
 |
 */
+// 自定义常量
+require app_path().'/config/constant.php';
 // 自定义函数文件
 require app_path().'/helpers/funcs.php';
 

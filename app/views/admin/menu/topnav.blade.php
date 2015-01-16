@@ -79,16 +79,16 @@
                             class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href=""><i class="fa fa-angle-right"></i><span>上次登陆时间:{{ $last_login_time }}</span></a>
+                            <a href="javascript:;"><i class="fa fa-angle-right"></i><span>上次登陆时间:<b> {{ $last_login_time }}</b></span></a>
                         </li>
                         <li>
-                            <a href=""><i class="fa fa-angle-right"></i><span>上次登陆IP:{{ $last_login_ip }}</span></a>
+                            <a href="javascript:;"><i class="fa fa-angle-right"></i><span>上次登陆IP: <b>{{ $last_login_ip }}</b></span></a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="visible-md visible-lg"><a href="#" id="user-logo"><img src="/images/userlogo.jpg"
+                <li class="visible-md visible-lg"><a href="#" id="user-logo"><img src="{{resize($ulogo)}}"
                                                                                   class="img-circle"/></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ $uname }}<span class="caret"></span></a>

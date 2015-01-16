@@ -58,7 +58,7 @@
                             </td>
                             <td>{{$user->loginnum}}</td>
                             <td>{{date('Y-m-d H:m',strtotime($user->created_at))}}</td>
-                            <td>{{ link_to('user/edit','编辑',array('class'=>'ta'))}} {{ link_to('user/edit','禁用',array('class'=>'ta'))}}</td>
+                            <td>{{ link_to_action('UserController@showUsersEdit','编辑',array('id'=>$user->id))}} {{ link_to('user/edit','禁用',array('class'=>'ta'))}}</td>
                         </tr>
                         @endforeach
                     </tbody>

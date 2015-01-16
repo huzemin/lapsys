@@ -79,5 +79,10 @@
             $('.main').removeClass('col-md-11').addClass('col-md-10');
             $(this).removeAttr('data-flag');
         }
-    })
+    });
+    $('form').Validform({
+        label:"label",
+        showAllError:true,
+        tiptype:5
+    });
 });

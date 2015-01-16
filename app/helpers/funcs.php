@@ -53,3 +53,73 @@ if(!function_exists('valid_email')) {
         return false;
     }
 }
+
+if(!function_exists('get_upload_path')) {
+    function get_upload_path($type = null) {
+        $date = date('Ymd');
+        switch ($type) {
+            case 'public':
+                $path = public_path().'/uploads/images/';
+                break;
+            case 'avatar':
+                $path = public_path().'/uploads/avatar/';
+                break;
+            case 'cache':
+                $path = storage_path().'/uploads/';
+                break;
+            default:
+                $path = public_path().'/uploads/default/'.$type.'/';
+                break;
+        }
+        return str_replace('\\',DIRECTORY_SEPARATOR,$path.$date.'/');
+    }
+}
+if(!function_exists('get_upload_filename')) {
+    function generate_rand_file($extension) {
+        return time().mt_rand(0,9999).'.'.$extension;
+    }
+}
+
+if(!function_exists('generate_upload_target')) {
+    function generate_upload_target($extension, $type="") {
+        $target = array(
+            'filename' => generate_rand_file($extension),
+            'path'=> get_upload_path($type),
+            'ext' => $extension,
+            );
+        $target['target'] = str_replace('\\', DIRECTORY_SEPARATOR, $target['path'].$target['filename']);
+        $target['store'] =  str_replace(public_path(), '', $target['target']);
+        return $target;
+    }
+}
+
+if(!function_exists('resize')) {
+    // 图片缩放
+    function resize($file,$width = 100,$height = 100,$type = 'basic',$absolute = false) {
+       $target = \Lib\File::resize($file,$width,$height,$type);
+       if($absolute) {
+            return $target;
+       } else {
+            return str_replace(PUBLIC_PTH, '', $target);
+       }
+    }
+}
+
+if(!function_exists('do_upload')) {
+    // 图片上传
+    function do_upload($field,$folder,$relative = true, $auto_date_dir = true) {
+        $uploadObj = new \Lib\Upload(array(
+            'upload_form_field' => $field,
+            'auto_date_dir'     => $auto_date_dir,
+            'out_file_dir'      => UP_PTH . $folder .'/',
+            'allowed_file_ext'  => array('gif', 'jpg', 'jpeg', 'png')
+        ));
+        $upfile_arr = $uploadObj->upload_process();
+        if(count($upfile_arr) > 0 && $relative) {
+            foreach($upfile_arr as $key => &$value) {
+                $value = str_replace(PUBLIC_PTH, '', $value);
+            }
+        }
+        return $upfile_arr;
+    }
+}

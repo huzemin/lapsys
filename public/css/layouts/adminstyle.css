@@ -57,6 +57,7 @@ background-color: #1D1E1E;
 
 #user-logo img{
     height: 40px;
+    width: 40px;
     margin: 0;
     padding: 0;
     box-shadow:-1px 1px 2px #FFFFFF,1px -1px 2px #fff;

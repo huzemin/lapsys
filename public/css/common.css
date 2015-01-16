@@ -54,6 +54,14 @@ border-left-color: #5bc0de;
 .page-top{
     margin-top:10%;
 }
+
+.bg-fixed{
+    background-color: transparent;
+    background-size: 100% 100%; 
+    background-size: cover; 
+    background-position: center center;
+    background-repeat: no-repeat;
+}
 /*=================================
  * 登陆界面部分样式结束
  * ===============================*/

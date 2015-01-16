@@ -37,6 +37,8 @@ Route::group(array('before'=>'auth|admin','prefix'=>'admin'), function(){
     // 用户列表
     Route::get('/users', array('as'=>'admin_users_list','uses'=>'UserController@usersList'));
 
+    Route::get('/users/edit/{id}', array('as'=>'admin_users_edit','uses'=>'UserController@showUsersEdit'));
+    Route::post('/users/edit/{id}', array('uses'=>'UserController@doUsersEdit'));
 });
 
 // api不通过过滤器
@@ -49,14 +51,12 @@ Route::get('upload', function(){
 });
 
 Route::get('db',function(){
-    dd(date('Y-m-d H:i:s'));
-    return View::make('html.index');
+    $file = '/uploads/avatar/20150116/14213877919623.jpg';
+    pf(\Lib\File::resize($file,100,100,'adapter'));
 });
 
 Route::post('upload', function(){
     $file = Input::file('file');
-    if($file) {
-        $file->move('uploads/test',$file->getClientOriginalName());
-    }
+    pf(do_upload('file','avatars'));
     return View::make('html.upload');
 });
