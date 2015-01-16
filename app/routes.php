@@ -55,6 +55,10 @@ Route::get('db',function(){
     pf(\Lib\File::resize($file,100,100,'adapter'));
 });
 
+Route::get('view',function(){
+    return View::make('html.index');
+});
+
 Route::post('upload', function(){
     $file = Input::file('file');
     pf(do_upload('file','avatars'));

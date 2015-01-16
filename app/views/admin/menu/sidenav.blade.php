@@ -6,7 +6,7 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin_users_list') }}"><i class="fa fa-users"></i><span>用户列表</span></a>
+                    <a href="{{ route('admin_users_list') }}" class="pjaxlink" ><i class="fa fa-users"></i><span>用户列表</span></a>
                 </li>
                 <li>
                     <a href=""><i class="fa fa-user-md"></i><span>管理员列表</span></a>

@@ -3,11 +3,11 @@
 @section('content')
 @if($user)
 <!-- 路径导航 -->
-<ol class="breadcrumb">
-  <li><a href="#">主页</a></li>
-  <li><a href="#">用户管理</a></li>
-  <li><a href="#">{{ $user->name ? $user->name: $user->username }}</a></li>
-  <li class="active"><a href="#">编辑</a></li>
+<ol class="breadcrumb" data-pjax="true">
+  <li><a href="{{ route('admin') }}">主页</a></li>
+  <li><a href="{{ route('admin_users_list') }}">用户管理</a></li>
+  <li>{{ $user->name ? $user->name: $user->username }}</li>
+  <li class="active">编辑</li>
 </ol>
 <!-- 内容主体 -->
 
@@ -18,7 +18,7 @@
     <div class ="panel panel-primary" >
         <div class="panel-heading">用户编辑</div>
         <div class="panel-body">
-            {{ Form::open(array('class'=>"form-horizontal","role"=>'form','enctype'=>"multipart/form-data"))}}
+            {{ Form::open(array('class'=>"form-horizontal","role"=>'form','enctype'=>"multipart/form-data",'data-pjax'=>'true'))}}
               <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">真实姓名</label>
                 <div class="col-sm-10 col-md-4">
@@ -30,7 +30,7 @@
                 <div class="col-sm-10 col-md-4">
                   <input type="file" class="form-control" id="image" name="image">
                   <div>
-                    原图片:<img src="{{resize($user->image,200,200)}}" style="width:100px;margin:10px"/>
+                    原图片:<img src="{{resize($user->image,200,200)}}" style="width:120px;margin:10px"/>
                   </div>
                 </div>
               </div>

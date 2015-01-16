@@ -2,9 +2,9 @@
 
 @section('content')
 <!-- 路径导航 -->
-<ol class="breadcrumb">
-  <li><a href="#">主页</a></li>
-  <li><a href="#">用户管理</a></li>
+<ol class="breadcrumb" data-pjax="true">
+  <li><a href="{{ route('admin') }}">主页</a></li>
+  <li><a href="{{ route('admin_users_list') }}">用户管理</a></li>
   <li class="active">用户列表</li>
 </ol>
 <!-- 内容主体 -->
@@ -13,7 +13,7 @@
         <div class="panel-heading">用户列表 <span class="pull-right label label-primary">用户总数:{{$total}}</span></div>
         <div class="panel-body">
             <div class="list-search text-right">
-            <form class="form-inline" role="form" method="get">
+            <form class="form-inline" action="{{ route('admin_users_list') }}"role="form" method="get" data-pjax=true>
                 <div class="form-group">
                     <label class="sr-only" for="s-keyword">Keyword</label>
                     <input type="text" class="form-control" name='keyword' value="{{ $keyword }}" id="s-keyword" placeholder="请输入关键词">
@@ -28,7 +28,7 @@
             </form>
             </div>
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table table-hover table-striped table-bordered">
                     <legend>用户列表</legend>
                     <thead>
                         <tr>
@@ -37,8 +37,8 @@
                             <th>登陆名</th>
                             <th>邮箱</th>
                             <th>用户状态</th>
-                            <th>注册时间</th>
                             <th>登陆次数</th>
+                            <th>注册时间</th>
                             <th>操作</th>
                         </tr>
                     </thead>
@@ -58,11 +58,14 @@
                             </td>
                             <td>{{$user->loginnum}}</td>
                             <td>{{date('Y-m-d H:m',strtotime($user->created_at))}}</td>
-                            <td>{{ link_to_action('UserController@showUsersEdit','编辑',array('id'=>$user->id))}} {{ link_to('user/edit','禁用',array('class'=>'ta'))}}</td>
+                            <td>{{ link_to_action('UserController@showUsersEdit','编辑',array('id'=>$user->id),array('class'=>'pjaxlink'))}} {{ link_to('user/setting/'.$user->id,'设置',array('class'=>'ta')) }} </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+                @if(count($users) == 0)
+                    <p class="alert alert-warning text-center">无数据</p>
+                @endif
             </div>
             <div class="center">
             {{$users->links()}}

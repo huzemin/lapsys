@@ -16,7 +16,9 @@ body, html {margin: 0px;height: 100%;overflow:hidden;}
     background: #7F7F7F;
     display: none;
 }
-
+.label{
+    padding: .5em .6em .5em;
+}
 /* 顶部导航 */
 .navbar{border-radius: 0 !important;margin-bottom:0;}
 .navbar-inverse {

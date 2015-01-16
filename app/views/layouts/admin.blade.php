@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap-select.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/poshytip/tip-twitter/tip-twitter.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/nprogress.css"/>
     <link rel="stylesheet" href="{{ asset('css/validform.css') }}" />
     @yield('styleload','')
     <link rel="stylesheet" type="text/css" href="/css/layouts/adminstyle.css"/>
@@ -26,7 +27,7 @@
         <div class="col-md-2 side lside visible-md visible-lg">
             @include('admin.menu.sidenav')
         </div>
-        <div class="col-md-10 main">
+        <div class="col-md-10 main" id="pjax">
            @yield('content','')
         </div>
         <div class="col-md-2 side rside">
@@ -35,8 +36,10 @@
 </div>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/jquery.enplaceholder.js"></script>
+<script type="text/javascript" src="/js/jquery.pjax.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/jquery.poshytip.min.js"></script>
+<script type="text/javascript" src="/js/nprogress.js"></script>
 <script type="text/javascript" src="/js/jquery.bootstrap-growl.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap-select/bootstrap-select.js"></script>
 <script type="text/javascript" src="/js/bootstrap-select/i18n/defaults-zh_CN.js"></script>

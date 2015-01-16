@@ -82,7 +82,7 @@
 <script type="text/javascript" src="/js/common/run.js"></script>
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker1').datetimepicker({language:'zh-cn',pickTime:false});
+        $('#datetimepicker1').datetimepicker({language:'zh-cn',pickTime:true});
     });
 </script>
 </body>
