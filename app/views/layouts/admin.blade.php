@@ -17,7 +17,17 @@
     <script src="/js/html5shiv.min.js"></script>
     <script src="/js/respond.min.js"></script>
     <![endif]-->
-</head>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.enplaceholder.js"></script>
+    <script type="text/javascript" src="/js/jquery.pjax.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.poshytip.min.js"></script>
+    <script type="text/javascript" src="/js/nprogress.js"></script>
+    <script type="text/javascript" src="/js/bootbox.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.bootstrap-growl.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-select/bootstrap-select.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-select/i18n/defaults-zh_CN.js"></script>
+    </head>
 <body>
 <div id="#topnav">
     @include('admin.menu.topnav')
@@ -34,15 +44,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="/js/jquery.min.js"></script>
-<script type="text/javascript" src="/js/jquery.enplaceholder.js"></script>
-<script type="text/javascript" src="/js/jquery.pjax.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/jquery.poshytip.min.js"></script>
-<script type="text/javascript" src="/js/nprogress.js"></script>
-<script type="text/javascript" src="/js/jquery.bootstrap-growl.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap-select/bootstrap-select.js"></script>
-<script type="text/javascript" src="/js/bootstrap-select/i18n/defaults-zh_CN.js"></script>
 <script type="text/javascript" src="{{ asset('js/Validform.min.js') }}"></script>
 <script type="text/javascript" src="/js/common/admin.js"></script>
 <script type="text/javascript" src="/js/common/run.js"></script>

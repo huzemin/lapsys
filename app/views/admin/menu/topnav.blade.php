@@ -78,6 +78,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shield"></i><span>用户状态</span><span
                             class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
+                        <li><a href="javascript:;"><i class="fa fa-angle-right"></i> 登陆角色: <b>{{$role_name}}</b></a></li>
                         <li>
                             <a href="javascript:;"><i class="fa fa-angle-right"></i><span>上次登陆时间:<b> {{ $last_login_time }}</b></span></a>
                         </li>

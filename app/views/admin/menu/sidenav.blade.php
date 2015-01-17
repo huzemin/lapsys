@@ -6,10 +6,13 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('admin_users_list') }}" class="pjaxlink" ><i class="fa fa-users"></i><span>用户列表</span></a>
+                    <a href="{{ route('admin_users_list') }}" ><i class="fa fa-users"></i><span>用户列表</span></a>
                 </li>
                 <li>
                     <a href=""><i class="fa fa-user-md"></i><span>管理员列表</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin_roles_list') }}"><i class="fa fa-bars"></i><span>角色列表</span></a>
                 </li>
                 <li>
                     <a href=""><i class="fa fa-credit-card"></i><span>个人中心</span></a>

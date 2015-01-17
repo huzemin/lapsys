@@ -164,14 +164,16 @@ class UserController extends BaseController {
         }
         $this->gdata['users'] = $users;
         $this->gdata['total'] = $users->getTotal();
-        return View::make('admin.userslist', $this->gdata)->with(array('keyword'=>$keyword));
+        return View::make('admin.user.userslist', $this->gdata)->with(array('keyword'=>$keyword));
     }
 
 
     public function showUsersEdit($id) {
         $user = $this->user->where('id',$id)->first();
+        $roles = Role::all();
         $this->gdata['user'] = $user;
-        return View::make('admin.usersedit', $this->gdata);
+        $this->gdata['roles'] = $roles;
+        return View::make('admin.user.usersedit', $this->gdata);
     }
 
     public function doUsersEdit($id) {
@@ -190,15 +192,18 @@ class UserController extends BaseController {
             $upload_arr = do_upload('image','avatars');
             if(count($upload_arr) > 0)
                $user->image = array_pop($upload_arr);
+            if(!empty(Input::get('role_id'))) {
+                $user->role_id = Input::get('role_id');
+            }
             $user->isadmin = Input::get('isadmin');
             $user->save();
-            $style = 'success';
+            $alert = 'success';
             $msg = '用户更新成功！';
         } else {
-            $style = 'danger';
+            $alert = 'danger';
             $msg = '用更新失败！';
         }
         $this->gdata['user'] = $user;
-        return Redirect::route('admin_users_edit', array('id'=>$id))->with('msg',$msg);
+        return Redirect::route('admin_users_edit', array('id'=>$id))->with('msg',$msg)->with('alert',$alert);
     }
 }

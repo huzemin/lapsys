@@ -39,28 +39,23 @@ Route::group(array('before'=>'auth|admin','prefix'=>'admin'), function(){
 
     Route::get('/users/edit/{id}', array('as'=>'admin_users_edit','uses'=>'UserController@showUsersEdit'));
     Route::post('/users/edit/{id}', array('uses'=>'UserController@doUsersEdit'));
+
+    // 权限设置
+    Route::get('/roles', array('as'=>'admin_roles_list', 'uses'=>'RoleController@show'));
+    Route::get('/roles/edit/{id}', array('as'=>'admin_roles_edit', 'uses'=>'RoleController@showEdit'));
+    Route::post('/roles/edit/{id}', array('uses'=>'RoleController@doEdit'));
+
+    Route::get('/roles/add', array('as'=>'admin_roles_add', 'uses'=>'RoleController@add'));
+    Route::post('/roles/add', array('uses'=>'RoleController@add'));
+
+    Route::get('/roles/delete/{id}', array('as'=>'admin_roles_delete','uses'=>'RoleController@delete'));
+
+    Route::get('/roles/auth/{id}', array('as'=>'admin_roles_auth','uses'=>'RoleController@showAuth'));
+    Route::post('/roles/auth/{id}', array('uses'=>'RoleController@doAuth'));
 });
 
 // api不通过过滤器
 Route::post('api/ucheck',array('as'=>'ucheck','uses'=>'UserController@checkValid')); // 检查用户邮箱是否可用
 
-Route::get('upload', function(){
-    if(Input::file())
-        dd(Input::file("file"));
-    return View::make('html.upload');
-});
-
-Route::get('db',function(){
-    $file = '/uploads/avatar/20150116/14213877919623.jpg';
-    pf(\Lib\File::resize($file,100,100,'adapter'));
-});
-
-Route::get('view',function(){
-    return View::make('html.index');
-});
-
-Route::post('upload', function(){
-    $file = Input::file('file');
-    pf(do_upload('file','avatars'));
-    return View::make('html.upload');
-});
+// 测试路由文件导入 prefix_route = 'test'
+require_once 'route_test.php';

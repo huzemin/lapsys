@@ -68,4 +68,9 @@ return array(
 
 	),
 
+	'auth_except'=>array(
+		'admin','/admin'
+	),
+	'auth_role_except' => array('ROOT')
+
 );

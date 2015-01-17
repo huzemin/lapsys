@@ -16,7 +16,7 @@
     $('.sidenav a span').each(function(index, el){
         var title = $(el).text();
         if(title.trim() != '') {
-          $(el).parent().attr('data-toggle',"poshytip");
+          $(el).parent().attr('data-toggle',"poshytip").addClass('pjaxlink');
           $(el).parent().attr('title',title);
         }
     });

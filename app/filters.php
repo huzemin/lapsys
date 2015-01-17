@@ -65,9 +65,29 @@ Route::filter('guest', function()
 Route::filter('admin', function(){
 	if(Auth::check()) {
 		// 判断是否为管理员
-		if(!Auth::user()->isAdmin()) {
+		if(!Auth::user()->isAdmin() || Auth::user()->role->status != 1 ) {
 			return View::make('admin.forbidden');
 		}
+		// 判断是否有权限访问
+		$role = Auth::user()->role;
+		$auth = $role->auth;
+		$auth_except = Config::get('auth.auth_except', array());
+		$auth_role_except = Config::get('auth.auth_role_except', array());
+		$auth_except = Config::get('auth.auth_except', array());
+		$_current_method = Request::method();
+		$_current_uri = Route::getCurrentRoute()->getURI();
+		$_uri = preg_replace('#[^\w]#', '_', $_current_uri);
+		// 不检查权限设置直接可以访问:最高权限Root
+		if(in_array($_uri, $auth_except) || in_array($role->role_name, $auth_role_except)){
+			return;
+		}
+		if(!empty($auth)) {
+			$auth = unserialize($auth);
+			if(isset($auth[$_uri]) && isset($auth[$_uri]['auth']) && in_array($_current_method, $auth[$_uri]['auth'])) {
+				return;
+			}
+		}
+		return View::make('admin.role.forbidden', array('rolename'=> $role->role_name));
 	} else {
 		return Redirect::to('login');
 	}
