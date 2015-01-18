@@ -2,7 +2,7 @@
 return array(
     'admin'=> array(
         'website'  =>'Project Manager System',
-        'remember' => true
+        'remember' => false
     ),
     'frontend' => array(
         'website'=>'Project'

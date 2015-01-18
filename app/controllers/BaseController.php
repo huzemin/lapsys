@@ -25,8 +25,8 @@ class BaseController extends Controller {
 			$gdata['ulogo'] = Auth::user()->image;
 			$gdata['role_name'] = Auth::user()->role->role_name;
 			// 获取上次登陆时间和IP
-			$gdata['last_login_time'] = Session::get('last_login_time');
-			$gdata['last_login_ip'] = Session::get('last_login_ip');
+			$gdata['last_login_time'] = Session::get('last_login_time') ? Session::get('last_login_time') : Auth::user()->updated_at->toDateTimeString();
+			$gdata['last_login_ip'] = Session::get('last_login_ip') ? Session::get('last_login_ip') : Auth::user()->loginip;
 		}
 		return $gdata;
 	}

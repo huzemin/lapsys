@@ -1,6 +1,9 @@
 jQuery(document).ready(function(){
     init(jQuery);
-    NProgress.configure({ parent: '#pjax' });
+    if(typeof NProgress == 'object') {
+        NProgress.configure({ parent: '#pjax' });
+    }
+
     $(document).on('click', 'a[data-pjax=delete]', function(event){
         event.preventDefault();
         var parent = $(this).closest('tr');
