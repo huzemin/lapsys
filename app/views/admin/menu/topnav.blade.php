@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#" style="color: gold;"><i class="fa fa-coffee fa-lg"></i></i>
+            <a class="navbar-brand" href="{{route('admin')}}" style="color: gold;"><i class="fa fa-coffee fa-lg"></i></i>
                 <span>管理中心</span></a>
             <a class="sidenav-toggle visible-md visible-lg" href="javascript:void(0)"><i
                     class="fa fa-indent fa-lg"></i></a> <!-- fa-outdent -->
@@ -21,11 +21,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                             class="fa fa-user"></i><span>用户管理</span><span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#"><i class="fa fa-users"></i><span>用户列表</span></a></li>
-                        <li><a href="#"><i class="fa fa-user-md"></i><span>管理员列表</span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-credit-card"></i><span>个人中心</span></a></li>
-                        <li class="divider"></li>
+                        <li><a href="{{ route('admin_users_list') }}" ><i class="fa fa-users"></i><span>用户列表</span></a></li>
+                        <li><a href="{{ route('admin_users_manager') }}"><i class="fa fa-user-md"></i><span>管理员列表</span></a></li>
+                        <li><a href="{{ route('admin_roles_list') }}"><i class="fa fa-bars"></i><span>角色列表</span></a></li>
+                        <li><a href="{{ route('admin_users_profile') }}"><i class="fa fa-credit-card"></i><span>个人信息</span></a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -94,7 +93,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ $uname }}<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">個人信息</a></li>
+                        <li><a href="{{ route('admin_users_profile') }}">个人信息</a></li>
                         <li class="divider"></li>
                         <li><a href="{{ url('logout') }}">退出</a></li>
                     </ul>

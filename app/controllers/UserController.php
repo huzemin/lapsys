@@ -235,4 +235,35 @@ class UserController extends BaseController {
         }
         return Redirect::route('admin_users_list')->with('msg',$msg)->with('alert',$alert);
     }
+
+    // 管理员列表查看界面
+    public function showManager() {
+         // 关键词搜索
+        $keyword = Input::get('keyword','');
+        if(!empty($keyword)) {
+          $Euser = $this->user->where('isadmin',1)->where('username','like',"%$keyword%")->orWhere('email','like',"%$keyword%")->orWhere('name','like',"%$keyword%");
+        } else {
+           $Euser = $this->user->where('isadmin','1');
+        }
+
+        $users = $Euser->orderBy('isadmin','desc')->orderBy('created_at','desc')->paginate(15);
+
+        // 分页参数添加自定义信息
+        if(!empty($keyword)) {
+            $users->appends(array('keyword' => $keyword));
+        }
+        $this->gdata['users'] = $users;
+        $this->gdata['total'] = $users->getTotal();
+        return View::make('admin.user.managerslist', $this->gdata)->with(array('keyword'=>$keyword));
+    }
+
+    // 个人资料
+    public function showProfile($id = null) {
+        if(!isset($id)) {
+            $id = Auth::id();
+        }
+        $user = $this->user->where('id',$id)->first();
+        $this->gdata['user'] = $user;
+        return View::make('admin.user.profile',$this->gdata);
+    }
 }
