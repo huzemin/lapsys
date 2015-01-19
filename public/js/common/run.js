@@ -1,6 +1,5 @@
 jQuery(document).ready(function(){
     init(jQuery);
-    initPoshytip();
     if(typeof NProgress == 'object') {
         NProgress.configure({ parent: '#pjax' });
     }
