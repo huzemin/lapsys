@@ -11,9 +11,6 @@ jQuery(document).ready(function(){
             $('.sidenav > li > a').siblings('ul').slideUp();
         }
     });
-    if ($.support.pjax) {
-        $(document).on('pjax:end', function() { NProgress.inc(0.3); NProgress.done();initPoshytip();});
-    }
     // 初始化菜单tip
     $('.sidenav a span').each(function(index, el){
         var title = $(el).text();

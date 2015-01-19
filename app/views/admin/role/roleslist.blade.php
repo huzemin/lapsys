@@ -59,7 +59,7 @@
                             <td>{{date('Y-m-d H:m',strtotime($role->updated_at))}}</td>
                             <td>
                                 @if(!in_array($role->role_name,$roleexcept))
-                                {{ link_to_route('admin_roles_edit','编辑',array('id'=>$role->id),array('class'=>'pjaxlink'))}} {{ link_to_route('admin_roles_auth', '授权' ,array('id'=>$role->id),array('class'=>'ta pjaxlink')) }} {{ link_to_route('admin_roles_delete','删除',array('id'=>$role->id),array('class'=>'ta delete','data-pjax'=>'delete','data-toggle'=>'ptip','title'=>'警告:删除无法复原!')) }}
+                                {{ link_to_route('admin_roles_edit','编辑',array('id'=>$role->id),array('class'=>'pjaxlink'))}} {{ link_to_route('admin_roles_auth', '授权' ,array('id'=>$role->id),array('class'=>'ta pjaxlink')) }} {{ link_to_route('admin_roles_delete','删除',array('id'=>$role->id),array('class'=>'ta delete','data-pjax'=>'delete','data-toggle'=>'rptip','title'=>'警告:删除无法复原!')) }}
                                 @else
                                     <span data-toggle="tptip" title="无法编辑" class="label label-danger">最高权限</span>
                                 @endif
