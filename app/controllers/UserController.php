@@ -192,9 +192,12 @@ class UserController extends BaseController {
             $upload_arr = do_upload('image','avatars');
             if(count($upload_arr) > 0)
                $user->image = array_pop($upload_arr);
-            if(!empty(Input::get('role_id'))) {
-                $user->role_id = Input::get('role_id');
+
+            $role_id = Input::get('role_id');
+            if(!empty($role_id)) {
+                $user->role_id = $role_id;
             }
+            $user->status = Input::get('status');
             $user->isadmin = Input::get('isadmin');
             $user->save();
             $alert = 'success';
@@ -205,5 +208,62 @@ class UserController extends BaseController {
         }
         $this->gdata['user'] = $user;
         return Redirect::route('admin_users_edit', array('id'=>$id))->with('msg',$msg)->with('alert',$alert);
+    }
+
+    public function doUsersDelete($id) {
+        $user = $this->user->find($id);
+        if($user){
+            $auth_role_except = Config::get('auth.auth_role_except', array());
+            if($user->role_id != 0){
+                if(in_array($user->role->role_name, $auth_role_except) && !in_array(Auth::user()->role->role_name,$auth_role_except)) {
+                    $alert = "warning";
+                    $msg = "你无权限删除该用户！";
+                } else {
+                    $alert = "warning";
+                    $msg = "你无权限删除本身用户或者对方具有内置最高权限的用户！";
+                }
+            }else{
+                if($user->delete()) {
+                    $alert = "success";
+                    $msg = "用户删除成功！";
+                }
+            }
+        }
+        if(!isset($msg)) {
+            $alert = "danger";
+            $msg = "用户删除失败！";
+        }
+        return Redirect::route('admin_users_list')->with('msg',$msg)->with('alert',$alert);
+    }
+
+    // 管理员列表查看界面
+    public function showManager() {
+         // 关键词搜索
+        $keyword = Input::get('keyword','');
+        if(!empty($keyword)) {
+          $Euser = $this->user->where('isadmin',1)->where('username','like',"%$keyword%")->orWhere('email','like',"%$keyword%")->orWhere('name','like',"%$keyword%");
+        } else {
+           $Euser = $this->user->where('isadmin','1');
+        }
+
+        $users = $Euser->orderBy('isadmin','desc')->orderBy('created_at','desc')->paginate(15);
+
+        // 分页参数添加自定义信息
+        if(!empty($keyword)) {
+            $users->appends(array('keyword' => $keyword));
+        }
+        $this->gdata['users'] = $users;
+        $this->gdata['total'] = $users->getTotal();
+        return View::make('admin.user.managerslist', $this->gdata)->with(array('keyword'=>$keyword));
+    }
+
+    // 个人资料
+    public function showProfile($id = null) {
+        if(!isset($id)) {
+            $id = Auth::id();
+        }
+        $user = $this->user->where('id',$id)->first();
+        $this->gdata['user'] = $user;
+        return View::make('admin.user.profile',$this->gdata);
     }
 }

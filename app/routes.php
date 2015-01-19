@@ -39,6 +39,8 @@ Route::group(array('before'=>'auth|admin','prefix'=>'admin'), function(){
 
     Route::get('/users/edit/{id}', array('as'=>'admin_users_edit','uses'=>'UserController@showUsersEdit'));
     Route::post('/users/edit/{id}', array('uses'=>'UserController@doUsersEdit'));
+    Route::get('/users/delete/{id}', array('as'=>'admin_users_delete','uses'=>'UserController@doUsersDelete'));
+  
 
     // 权限设置
     Route::get('/roles', array('as'=>'admin_roles_list', 'uses'=>'RoleController@show'));
@@ -52,6 +54,11 @@ Route::group(array('before'=>'auth|admin','prefix'=>'admin'), function(){
 
     Route::get('/roles/auth/{id}', array('as'=>'admin_roles_auth','uses'=>'RoleController@showAuth'));
     Route::post('/roles/auth/{id}', array('uses'=>'RoleController@doAuth'));
+
+    // 管理员列表
+    Route::get('/users/manager', array('as'=>'admin_users_manager','uses'=>'UserController@showManager'));
+    // 个人资料
+    Route::get('/users/profile/{id?}', array('as'=>'admin_users_profile','uses'=>'UserController@showProfile'));
 });
 
 // api不通过过滤器

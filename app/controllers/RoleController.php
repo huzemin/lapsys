@@ -11,6 +11,8 @@ class RoleController extends BaseController {
     }
 
     public function show() {
+        // 在配置文件中设置得最高权限角色，不能编辑和修改
+        $auth_role_except = Config::get('auth.auth_role_except', array());
         // 关键词搜索
         $keyword = Input::get('keyword','');
         if(!empty($keyword)) {
@@ -27,7 +29,7 @@ class RoleController extends BaseController {
         }
         $this->gdata['roles'] = $roles;
         $this->gdata['total'] = $roles->getTotal();
-        return View::make('admin.role.roleslist',$this->gdata)->withKeyword($keyword);
+        return View::make('admin.role.roleslist',$this->gdata)->withKeyword($keyword)->withRoleexcept($auth_role_except);
     }
     // 角色基本信息编辑
     public function showEdit($id) {
@@ -132,6 +134,7 @@ class RoleController extends BaseController {
                 }
             }
         }
+
         foreach ($authes as $key => &$val) {
             $val['title'] = '暂无';
             $auth = array();
@@ -143,7 +146,6 @@ class RoleController extends BaseController {
                 }
             }
             $val['auth'] = $auth;
-
         }
         $this->gdata['role'] = $role;
         $this->gdata['authes'] = $authes;
@@ -158,7 +160,7 @@ class RoleController extends BaseController {
         }
         $sdata = serialize($data);
         $role = $this->role->find($id);
-        if($id == $_id && $role) {
+        if(isset($_id) && $id == $_id && $role) {
             $role->backup = $role->auth;
             $role->auth = $sdata;
             $role->updated_user = Auth::id();
@@ -167,7 +169,6 @@ class RoleController extends BaseController {
                 $msg = "角色权限更新成功！";
             }
         }
-
         if(!isset($msg)) {
             $alert = "danger";
             $msg = "角色权限更新失败！";

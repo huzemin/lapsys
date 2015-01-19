@@ -11,7 +11,10 @@
             $('.sidenav > li > a').siblings('ul').slideUp();
         }
     });
-    var poshytip_className = "tip-twitter";
+    initPoshytip();
+    if ($.support.pjax) {
+        $(document).on('pjax:end', function() { NProgress.inc(0.3); NProgress.done();initPoshytip();});
+    }
     // 初始化菜单tip
     $('.sidenav a span').each(function(index, el){
         var title = $(el).text();
@@ -20,6 +23,26 @@
           $(el).parent().attr('title',title);
         }
     });
+    $('.sidenav-toggle').click(function(e){
+        e.preventDefault();
+        var flag = $(this).attr('data-flag');
+        if(typeof flag == 'undefined') {
+            $(this).find('i').removeClass('fa-indent').addClass('fa-outdent');
+            $('.lside').removeClass('col-md-2').addClass('col-md-1');
+            $('.main').removeClass('col-md-10').addClass('col-md-11');
+            $(this).attr('data-flag',false)
+        } else {
+          console.log('hello');
+            $(this).find('i').removeClass('fa-outdent').addClass('fa-indent');
+            $('.lside').removeClass('col-md-1').addClass('col-md-2');
+            $('.main').removeClass('col-md-11').addClass('col-md-10');
+            $(this).removeAttr('data-flag');
+        }
+    });
+});
+
+ function initPoshytip() {
+    var poshytip_className = "tip-twitter";
     $('*[data-toggle=poshytip],*[data-toggle=lptip]').poshytip({
         className: poshytip_className,
         showTimeout: 100,
@@ -31,7 +54,7 @@
         fade: true,
         slide: true
     });
-        $('*[data-toggle=tptip]').poshytip({
+    $('*[data-toggle=tptip]').poshytip({
         className: poshytip_className,
         showTimeout: 1,
         alignTo: 'target',
@@ -64,25 +87,9 @@
         fade: true,
         slide: true
     });
-    $('.sidenav-toggle').click(function(e){
-        e.preventDefault();
-        var flag = $(this).attr('data-flag');
-        if(typeof flag == 'undefined') {
-            $(this).find('i').removeClass('fa-indent').addClass('fa-outdent');
-            $('.lside').removeClass('col-md-2').addClass('col-md-1');
-            $('.main').removeClass('col-md-10').addClass('col-md-11');
-            $(this).attr('data-flag',false)
-        } else {
-          console.log('hello');
-            $(this).find('i').removeClass('fa-outdent').addClass('fa-indent');
-            $('.lside').removeClass('col-md-1').addClass('col-md-2');
-            $('.main').removeClass('col-md-11').addClass('col-md-10');
-            $(this).removeAttr('data-flag');
-        }
-    });
     $('form').Validform({
         label:"label",
         showAllError:true,
         tiptype:5
     });
-});
+ }

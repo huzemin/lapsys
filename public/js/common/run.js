@@ -29,7 +29,7 @@ jQuery(document).ready(function(){
     });
 
     if ($.support.pjax) {
-       $(document).pjax('.pjaxlink, .pagination li a, [data-pjax] a', '#pjax', {
+       $(document).pjax('.pjaxlink, .pagination li a, [data-pjax] a, .navbar a', '#pjax', {
             fragment: "#pjax",
             timeout: 10000,
             scrollTo:0
@@ -41,7 +41,6 @@ jQuery(document).ready(function(){
                 scrollTo:0
           });
         });
-
         NProgress.configure({ parent: '#pjax' });
         $(document).on('pjax:start',   function() { NProgress.start(); });
         $(document).on('pjax:popstate',   function() { NProgress.inc(0.2);; });
