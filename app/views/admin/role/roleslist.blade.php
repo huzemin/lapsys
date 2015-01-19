@@ -54,10 +54,16 @@
                                     <span class="label label-default">禁用</span>
                                 @endif
                             </td>
-                            <td>{{$role->user->username }}</td>
+                            <td>{{ $role->user ? $role->user->username :''}}</td>
                             <td>{{date('Y-m-d H:m',strtotime($role->created_at))}}</td>
                             <td>{{date('Y-m-d H:m',strtotime($role->updated_at))}}</td>
-                            <td>{{ link_to_route('admin_roles_edit','编辑',array('id'=>$role->id),array('class'=>'pjaxlink'))}} {{ link_to_route('admin_roles_auth', '授权' ,array('id'=>$role->id),array('class'=>'ta','class'=>'pjaxlink')) }} {{ link_to_route('admin_roles_delete','删除',array('id'=>$role->id),array('class'=>'ta delete','data-pjax'=>'delete')) }}</td>
+                            <td>
+                                @if(!in_array($role->role_name,$roleexcept))
+                                {{ link_to_route('admin_roles_edit','编辑',array('id'=>$role->id),array('class'=>'pjaxlink'))}} {{ link_to_route('admin_roles_auth', '授权' ,array('id'=>$role->id),array('class'=>'ta pjaxlink')) }} {{ link_to_route('admin_roles_delete','删除',array('id'=>$role->id),array('class'=>'ta delete','data-pjax'=>'delete')) }}
+                                @else
+                                    <span data-toggle="tptip" title="无法编辑" class="label label-danger">最高权限</span>
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -9,6 +9,9 @@
 </ol>
 <!-- 内容主体 -->
 <div class="container-fluid">
+   @if(Session::get('msg'))
+        <p class="alert alert-{{Session::get('alert', 'warning')}} alert-dismissible fade in"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>{{Session::get('msg')}}</p>
+    @endif
     <div class="panel panel-default" >
         <div class="panel-heading">用户列表 <span class="pull-right label label-primary">用户总数:{{$total}}</span></div>
         <div class="panel-body">
@@ -60,7 +63,7 @@
                             </td>
                             <td>{{$user->loginnum}}</td>
                             <td>{{date('Y-m-d H:m',strtotime($user->created_at))}}</td>
-                            <td>{{ link_to_action('UserController@showUsersEdit','编辑',array('id'=>$user->id),array('class'=>'pjaxlink'))}} {{ link_to('user/setting/'.$user->id,'设置',array('class'=>'ta')) }} {{ link_to('user/delete/'.$user->id,'删除',array('class'=>'ta','data-pjax'=>'delete')) }}</td>
+                            <td>{{ link_to_action('UserController@showUsersEdit','编辑',array('id'=>$user->id),array('class'=>'pjaxlink'))}} {{ link_to('user/setting/'.$user->id,'设置',array('class'=>'ta')) }} {{ link_to_route('admin_users_delete','删除',array('id'=>$user->id), array('class'=>'ta','data-pjax'=>'delete')) }}</td>
                         </tr>
                         @endforeach
                     </tbody>

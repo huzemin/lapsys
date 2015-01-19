@@ -19,7 +19,7 @@
         <div class="panel-body">
             @if(!isset($root))
             <div class="table-responsive">
-                  {{ Form::open(array('class'=>"form-horizontal","role"=>'form','enctype'=>"multipart/form-data"))}}
+                  {{ Form::open(array('class'=>"form-horizontal","role"=>'form','enctype'=>"multipart/form-data",'data-pjax'=>'true'))}}
                 <table class="table table-hover table-striped table-bordered">
                     <legend>角色列表</legend>
                     <thead>
@@ -39,7 +39,7 @@
                                 </div>
                             </td>
                             <td>
-                                <select name="{{$key}}[auth][]" class="selectpicker show-tick" multiple data-container="body" data-style="btn-primary">
+                                <select name="{{$key}}[auth][]" class="selectpicker show-tick" multiple data-container="body" data-style="btn-primary" style="display:none">
                                  @foreach($auth['auth'] as $key => $select)
                                     <option value="{{$key}}" {{$select}}>{{$key}}</option>
                                  @endforeach

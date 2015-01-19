@@ -37,8 +37,7 @@ jQuery(document).ready(function(){
        $(document).on('submit', 'form[data-pjax]', function(event) {
           $.pjax.submit(event, '#pjax', {
                 fragment: "#pjax",
-                timeout: 10000,
-                scrollTo:0
+                timeout: 10000
           });
         });
 

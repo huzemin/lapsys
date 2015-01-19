@@ -34,6 +34,15 @@
                   </div>
                 </div>
               </div>
+               <div class="form-group">
+                <label class="col-sm-2 control-label">账号状态</label>
+                <div class="col-sm-10 col-md-4">
+                    <select id="status" name="status" class="selectpicker">
+                        <option value="0" {{!$user->status?'selected':''}}>启用</option>
+                        <option value="1" {{$user->status?'selected':''}}>禁用</option>
+                    </select>
+                </div>
+              </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">是否设置为管理员</label>
                 <div class="col-sm-10 col-md-4">
