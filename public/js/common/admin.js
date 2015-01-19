@@ -1,4 +1,4 @@
- $(function(){
+jQuery(document).ready(function(){
     $('.sidenav > li > a').click(function(e){
         e.preventDefault();
         $('.sidenav > li > a').removeClass('active');
@@ -11,7 +11,6 @@
             $('.sidenav > li > a').siblings('ul').slideUp();
         }
     });
-    initPoshytip();
     if ($.support.pjax) {
         $(document).on('pjax:end', function() { NProgress.inc(0.3); NProgress.done();initPoshytip();});
     }
@@ -40,56 +39,3 @@
         }
     });
 });
-
- function initPoshytip() {
-    var poshytip_className = "tip-twitter";
-    $('*[data-toggle=poshytip],*[data-toggle=lptip]').poshytip({
-        className: poshytip_className,
-        showTimeout: 100,
-        alignTo: 'target',
-        alignX: 'right',
-        alignY: 'center',
-        offsetX: 10,
-        allowTipHover: false,
-        fade: true,
-        slide: true
-    });
-    $('*[data-toggle=tptip]').poshytip({
-        className: poshytip_className,
-        showTimeout: 1,
-        alignTo: 'target',
-        alignX: 'center',
-        offsetY: 2,
-        allowTipHover: false,
-        fade: true,
-        slide: true
-    });
-     $('*[data-toggle=bptip]').poshytip({
-        className: poshytip_className,
-        showTimeout: 1,
-        alignTo: 'target',
-        alignX: 'center',
-        alignY: 'bottom',
-        offsetY: 2,
-        allowTipHover: false,
-        fade: true,
-        slide: true
-    });
-
-     $('*[data-toggle=rptip]').poshytip({
-        className: poshytip_className,
-        showTimeout: 1,
-        alignTo: 'target',
-        alignX: 'left',
-        alignY: 'center',
-        offsetX: 10,
-        allowTipHover: false,
-        fade: true,
-        slide: true
-    });
-    $('form').Validform({
-        label:"label",
-        showAllError:true,
-        tiptype:5
-    });
- }
