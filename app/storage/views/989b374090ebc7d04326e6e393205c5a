@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title><?php if(!empty($pagetitle)): ?> <?php echo $pagetitle; ?> <?php else: ?> Project Manager System <?php endif; ?></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/poshytip/tip-twitter/tip-twitter.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/nprogress.css"/>
+    <link rel="stylesheet" href="<?php echo asset('css/validform.css'); ?>" />
+    <?php echo $__env->yieldContent('styleload',''); ?>
+    <link rel="stylesheet" type="text/css" href="/css/layouts/adminstyle.css"/>
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.enplaceholder.js"></script>
+    <script type="text/javascript" src="/js/jquery.pjax.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.poshytip.min.js"></script>
+    <script type="text/javascript" src="/js/nprogress.js"></script>
+    <script type="text/javascript" src="/js/bootbox.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.bootstrap-growl.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-select/bootstrap-select.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-select/i18n/defaults-zh_CN.js"></script>
+    </head>
+<body>
+<div id="#topnav">
+    <?php echo $__env->make('admin.menu.topnav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</div>
+<div class="container-fluid layout">
+    <div class="row layout">
+        <div class="col-md-2 side lside visible-md visible-lg">
+            <?php echo $__env->make('admin.menu.sidenav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
+        <div class="col-md-10 main" id="pjax">
+           <?php echo $__env->yieldContent('content',''); ?>
+        </div>
+        <div class="col-md-2 side rside">
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="<?php echo asset('js/Validform.min.js'); ?>"></script>
+<script type="text/javascript" src="/js/common/admin.js"></script>
+<?php echo $__env->yieldContent('jsload',''); ?>
+</body>
+</html>
+
