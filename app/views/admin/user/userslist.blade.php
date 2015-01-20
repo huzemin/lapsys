@@ -63,7 +63,7 @@
                             </td>
                             <td>{{$user->loginnum}}</td>
                             <td>{{date('Y-m-d H:m',strtotime($user->created_at))}}</td>
-                            <td>{{ link_to_route('admin_users_profile','查看',array('id',$user->id),array('class'=>'ta')) }} {{ link_to_action('UserController@showUsersEdit','编辑',array('id'=>$user->id),array('class'=>'pjaxlink ta'))}} {{ link_to_route('admin_users_delete','删除',array('id'=>$user->id), array('class'=>'ta','data-pjax'=>'delete','data-toggle'=>'rptip','title'=>'警告:删除无法复原!')) }}</td>
+                            <td>{{ link_to_route('admin_users_profile','查看',array('id'=>$user->id),array('class'=>'ta pjaxlink')) }} {{ link_to_action('UserController@showUsersEdit','编辑',array('id'=>$user->id),array('class'=>'pjaxlink ta'))}} {{ link_to_route('admin_users_delete','删除',array('id'=>$user->id), array('class'=>'ta','data-pjax'=>'delete','data-toggle'=>'rptip','title'=>'警告:删除无法复原!')) }}</td>
                         </tr>
                         @endforeach
                     </tbody>

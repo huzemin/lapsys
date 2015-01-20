@@ -46,7 +46,6 @@
 </div>
 <script type="text/javascript" src="{{ asset('js/Validform.min.js') }}"></script>
 <script type="text/javascript" src="/js/common/admin.js"></script>
-<script type="text/javascript" src="/js/common/run.js"></script>
 @yield('jsload','')
 </body>
 </html>

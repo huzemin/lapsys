@@ -65,9 +65,14 @@ Route::filter('guest', function()
 Route::filter('admin', function(){
 	if(Auth::check()) {
 		// 判断是否为管理员
+		if(!Auth::user()->role) {
+			return View::make('admin.forbidden');
+		}
+
 		if(!Auth::user()->isAdmin() || Auth::user()->role->status != 1 ) {
 			return View::make('admin.forbidden');
 		}
+		
 		// 判断是否有权限访问
 		$role = Auth::user()->role;
 		$auth = $role->auth;
