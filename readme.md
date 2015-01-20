@@ -47,7 +47,7 @@
 | id            | 5           | 自增ID   |
 | role_name     | varchar(30) | 角色名称 |
 | status        | tyint       | 状态     |
-| setting       | text        | 设置     |
+| author        | text        | 设置     |
 | ------------- | ----------- | -------- |
 | created_at    | varchar(30) | 创建时间 |
 | updated_at    | varhcar(30) | 更新时间 |
@@ -75,10 +75,12 @@
 | website     |  varchar(50) |            网站名称           |
 | tags        | varchar(250) |              标签             |
 | viewnum     |      int(10) |            浏览次数           |
+| storenum    |      int(10) |            收藏次数           |
+| likenum     |      int(10) |            赞次数             |
 | status      |     tyint(2) |    状态: 0:正常 1:不可评论    |
-| commentable |      boolean |         true:允许评论         |
-| loginable   |      boolean |        true:登陆可查看        |
-| storeable   |      boolean | true:可以保存到自己的文章列表 |
+| s_comment   |      boolean |         true:允许评论         |
+| s_login     |      boolean |        true:登陆可查看        |
+| s_store     |      boolean | true:可以保存到自己的文章列表 |
 | created_at  |     datetime |            创建时间           |
 | updated_at  |     datetime |            更新时间           |
 | deleted_at  |     datetime |          软删除时间           |

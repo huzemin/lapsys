@@ -27,7 +27,10 @@
             </a>
             <ul>
                 <li>
-                    <a href=""><i class="fa fa-file-text"></i><span>文章列表</span></a>
+                    <a href="{{ route('admin_articles_list') }}"><i class="fa fa-file-text"></i><span>文章列表</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin_articles_add') }}" data-no="pjax"><i class="fa fa-pencil-square-o"></i><span>创建新文章</span></a>
                 </li>
                 <li>
                     <a href=""><i class="fa fa-eye"></i><span>待审文章</span></a>

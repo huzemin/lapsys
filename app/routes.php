@@ -59,6 +59,14 @@ Route::group(array('before'=>'auth|admin','prefix'=>'admin'), function(){
     Route::get('/users/manager', array('as'=>'admin_users_manager','uses'=>'UserController@showManager'));
     // 个人资料
     Route::get('/users/profile/{id?}', array('as'=>'admin_users_profile','uses'=>'UserController@showProfile'));
+
+    // 文章管理
+    Route::get('/articles/list', array('as'=>'admin_articles_list', 'uses'=>'ArticleController@showList'));
+    Route::get('/articles/add', array('as'=>'admin_articles_add', 'uses'=>'ArticleController@showAdd'));
+    Route::post('/articles/add', array('uses'=>'ArticleController@doAdd'));
+    Route::get('/articles/edit/{$id}', array('as'=>'admin_articles_edit', 'uses'=>'ArticleController@showEdit'));
+    Route::post('articles/edit/{$id}', array('uses'=>'ArticleController@doEdit'));
+    Route::get('/articles/delete/{$id}', array('as'=>'admin_articles_delete', 'uses'=>'ArticleController@delete'));
 });
 
 // api不通过过滤器

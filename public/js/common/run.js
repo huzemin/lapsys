@@ -47,7 +47,11 @@ jQuery(document).ready(function(){
         $(document).on('pjax:success',   function() { NProgress.inc(0.4);; });
         $(document).on('pjax:complete',   function() { NProgress.inc(0.4); });
         $(document).on('pjax:timeout',  function(event) { NProgress.set(0.9); NProgress.done();event.preventDefault()});
-        $(document).on('pjax:end', function() { NProgress.inc(0.3); NProgress.done();init(jQuery);});
+        $(document).on('pjax:end', function() { 
+            NProgress.inc(0.3);
+            NProgress.done();
+            init(jQuery);
+         });
     }
 });
 
@@ -117,4 +121,7 @@ function init($) {
         showAllError:true,
         tiptype:5
     });
+
+    // popover 
+    $('*[data-toggle=popover]').popover();
 }

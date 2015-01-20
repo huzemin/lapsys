@@ -33,7 +33,7 @@
             </div>
             <div class="table-responsive">
                 <table class="table table-hover table-striped table-bordered">
-                    <legend>管理员列表</legend>
+                    <caption>管理员列表</caption>
                     <thead>
                         <tr>
                             <th>#</th>

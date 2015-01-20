@@ -28,7 +28,7 @@
             </form>
             <div class="table-responsive">
                 <table class="table table-hover table-striped table-bordered">
-                    <legend>角色列表</legend>
+                    <caption>角色列表</caption>
                     <thead>
                         <tr>
                             <th data-toggle="tptip" title="角色ID">#</th>

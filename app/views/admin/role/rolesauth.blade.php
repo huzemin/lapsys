@@ -21,7 +21,7 @@
             <div class="table-responsive">
                   {{ Form::open(array('class'=>"form-horizontal","role"=>'form','enctype'=>"multipart/form-data",'data-pjax'=>'true'))}}
                 <table class="table table-hover table-striped table-bordered">
-                    <legend>角色列表</legend>
+                    <caption>角色列表</caption>
                     <thead>
                         <tr>
                             <th colspan="2">路由名称/路由URI</th>

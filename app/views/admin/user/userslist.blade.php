@@ -32,7 +32,7 @@
             </div>
             <div class="table-responsive">
                 <table class="table table-hover table-striped table-bordered">
-                    <legend>用户列表</legend>
+                    <caption >用户列表</caption>
                     <thead>
                         <tr>
                             <th>#</th>

@@ -14,9 +14,12 @@ jQuery(document).ready(function(){
     // 初始化菜单tip
     $('.sidenav a span').each(function(index, el){
         var title = $(el).text();
+        var parent = $(el).parent();
         if(title.trim() != '') {
-          $(el).parent().attr('data-toggle',"poshytip").addClass('pjaxlink');
-          $(el).parent().attr('title',title);
+          parent.attr('data-toggle',"poshytip")
+          if(parent.attr('data-no') != 'pjax')
+            parent.addClass('pjaxlink');
+          parent.attr('title',title);
         }
     });
     $('.sidenav-toggle').click(function(e){
