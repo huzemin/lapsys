@@ -38,10 +38,15 @@ class ArticleController extends BaseController {
         $data['user_id'] = Auth::id();
         $article = Article::create($data);
         if(isset($article->id)) {
-            return Redirect::route('admin_articles_add');
+            $msg = "文章添加成功!";
+            $alert = "success";
         } else {
-            return Redirect::route('admin');
+            $msg = "文章添加失败!";
+            $alert = "danger";
         }
+       
+        return Redirect::route('admin_articles_list')->with('msg',$msg)->with('alert',$alert);
+
     }
     public function showEdit($id) {
         $article = Article::find($id);

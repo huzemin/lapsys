@@ -30,12 +30,12 @@
               <div class="form-group">
                 <label for="title" class="col-sm-2 control-label">文章描述</label>
                 <div class="col-sm-10 col-md-4">
-                  <textarea  class="form-control" id="description" name="description">{{Input::old('description')}}</textarea>
+                  <textarea  class="form-control" id="description" name="description" rows=5>{{Input::old('description')}}</textarea>
                 </div>
               </div>
               <div class="form-group">
                 <label for="title" class="col-sm-2 control-label">文章内容</label>
-                <div class="col-sm-10">
+                <div class="col-sm-10 col-md-9" >
                   <textarea id="container" name="content" type="text/plain"></textarea>
                 </div>
               </div>
