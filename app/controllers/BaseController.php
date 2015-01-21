@@ -17,9 +17,13 @@ class BaseController extends Controller {
 
 	// 全局初始化
 	public function getGdata() {
+		$segments = Request::segments();
+		if(!isset($segments[1])) {
+			$segments[1] = '';
+		}
 		$gdata = array(
 			'client_ip' => get_client_ip(),
-			'segments' => Request::segments(),
+			'segments' => $segments
 		);
 		if(Auth::check()) {
 			$gdata['uname'] = Auth::user()->name ? Auth::user()->name: Auth::user()->username;
