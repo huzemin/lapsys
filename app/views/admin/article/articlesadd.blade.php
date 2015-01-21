@@ -14,7 +14,7 @@
     <div class ="panel panel-primary" >
         <div class="panel-heading">创建新文章</div>
         <div class="panel-body">
-            {{ Form::open(array('class'=>"form-horizontal","role"=>'form','enctype'=>"multipart/form-data",'data-pjax'=>'true'))}}
+            {{ Form::open(array('class'=>"form-horizontal","role"=>'form','enctype'=>"multipart/form-data"))}}
               <div class="form-group">
                 <label for="title" class="col-sm-2 control-label">文章标题</label>
                 <div class="col-sm-10 col-md-4">
@@ -53,7 +53,7 @@
                 <label class="col-sm-2 control-label">评论设置<i class="fa fa-question-circle" data-toggle="popover" title="提示" data-content="文章评论功能是否打开" data-placement="top" data-container="form" data-trigger="hover"></i></label>
                 <div class="col-sm-10 col-md-4">
                     <select name="s_comment" class="selectpicker">
-                        <option value="1">打开评论</option>
+                        <option value="1" selected>打开评论</option>
                         <option value="0">关闭评论</option>
                     </select>
                 </div>
@@ -61,8 +61,8 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">收藏设置<i class="fa fa-question-circle" data-toggle="popover" title="提示" data-content="文章是否被其他用户收藏" data-placement="top" data-container="form" data-trigger="hover"></i></label>
                 <div class="col-sm-10 col-md-4">
-                    <select name="s_comment" class="selectpicker">
-                        <option value="1">可收藏</option>
+                    <select name="s_store" class="selectpicker">
+                        <option value="1" selected>可收藏</option>
                         <option value="0">不可收藏</option>
                     </select>
                 </div>
@@ -70,9 +70,9 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">阅读需登陆<i class="fa fa-question-circle" data-toggle="popover" title="提示" data-content="是否需要登录才可阅读文章" data-placement="top" data-container="form" data-trigger="hover"></i></label>
                 <div class="col-sm-10 col-md-4">
-                    <select name="status" class="selectpicker">
-                        <option value="0">不需要</option>
-                        <option value="1">需要</option>
+                    <select name="s_login" class="selectpicker">
+                        <option value="1" selected>不需要</option>
+                        <option value="0">需要</option>
                     </select>
                 </div>
               </div>
@@ -87,6 +87,12 @@
                   <label for="refer" class="col-sm-2 control-label">引用链接</label>
                   <div class="col-sm-10 col-md-4">
                     <input type="text" class="form-control" id="refer" name="refer" value="{{Input::old('refer')}}" placeholder="引用链接">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="author" class="col-sm-2 control-label">原作者</label>
+                  <div class="col-sm-10 col-md-4">
+                    <input type="text" class="form-control" id="author" name="author" value="{{Input::old('author')}}" placeholder="原作者">
                   </div>
                 </div>
               </fieldset>
