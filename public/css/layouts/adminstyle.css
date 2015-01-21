@@ -187,7 +187,9 @@ ul.sidenav h4 {
     float: right !important;
     margin-top: -2px;
 }
-
+.sidenav .active{
+    background-color: rgba(84, 84, 84, 0.36);
+}
 /* Table  */
 .ta{ padding-left:5px;}
 tr td, table th { text-align: center;}

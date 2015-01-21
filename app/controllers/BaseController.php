@@ -18,7 +18,8 @@ class BaseController extends Controller {
 	// 全局初始化
 	public function getGdata() {
 		$gdata = array(
-			'client_ip' => get_client_ip()
+			'client_ip' => get_client_ip(),
+			'segments' => Request::segments(),
 		);
 		if(Auth::check()) {
 			$gdata['uname'] = Auth::user()->name ? Auth::user()->name: Auth::user()->username;
@@ -28,6 +29,7 @@ class BaseController extends Controller {
 			$gdata['last_login_time'] = Session::get('last_login_time') ? Session::get('last_login_time') : Auth::user()->updated_at->toDateTimeString();
 			$gdata['last_login_ip'] = Session::get('last_login_ip') ? Session::get('last_login_ip') : Auth::user()->loginip;
 		}
+		//
 		return $gdata;
 	}
 }

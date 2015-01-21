@@ -1,10 +1,10 @@
 <div class="side-bar">
     <ul class="sidenav menu-left-nest">
         <li>
-            <a href="#">
+            <a href="#" @if(in_array($segments[1] ,array('users','roles'))) class="active" @endif>
                 <i class="fa fa-user"></i><span>用户管理</span>
             </a>
-            <ul>
+            <ul style="@if(in_array($segments[1] ,array('users','roles'))) display:block @endif">
                 <li>
                     <a href="{{ route('admin_users_list') }}" ><i class="fa fa-users"></i><span>用户列表</span></a>
                 </li>
@@ -22,10 +22,10 @@
     </ul>
     <ul class="sidenav menu-left-nest">
         <li>
-            <a href="#">
+            <a href="#" @if($segments[1] == 'articles') class="active" @endif>
                 <i class="fa fa-book"></i><span>文章管理</span>
             </a>
-            <ul>
+            <ul style="@if($segments[1] == 'articles') display:block @endif">
                 <li>
                     <a href="{{ route('admin_articles_list') }}"><i class="fa fa-file-text"></i><span>文章列表</span></a>
                 </li>

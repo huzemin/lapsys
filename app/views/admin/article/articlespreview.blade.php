@@ -10,13 +10,15 @@
 <!-- 内容主体 -->
 <div class="container-fluid">
     <div class="panel panel-default" >
-        <div class="panel-heading">文章预览 <span class="pull-right label label-primary">文章更新时间:{{$article->updated_at}}</span></div>
+        <div class="panel-heading">文章预览 <a href="{{route('admin_artilces_preview',array('id'=>$article->id))}}" class="pjaxlink" data-toggle="tptip" title="刷新"><i class="fa fa-refresh"></i></a> <span class="pull-right label label-primary">文章更新时间:{{$article->updated_at}}</span></div>
         <div class="panel-body">
-            <h3>{{$article->title}}</h3>
-            <p><span>用户:{{$article->user?$article->user->username:''}}</span> <span>浏览次数:{{$article->viewnum}}</span></p>
+            <div style="padding:20px;max-width:700px;margin:0 auto">
+            <h3 class="text-center">{{$article->title}}</h3>
+            <p class="text-center"><span>用户:{{$article->user?$article->user->username:''}}</span> <span>浏览次数:{{$article->viewnum}}</span></p>
             <hr />
-            <div class="padding:20px">
-            {{$article->content}}
+            <div>
+                {{$article->content}}
+            </div>
             </div>
             <div class="table-responsive">
                 <table class="table table-hover table-striped table-bordered">

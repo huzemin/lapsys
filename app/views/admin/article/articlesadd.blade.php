@@ -50,7 +50,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">评论设置<i class="fa fa-question-circle" data-toggle="popover" title="提示" data-content="文章评论功能是否打开" data-placement="top" data-container="form" data-trigger="hover"></i></label>
+                <label class="col-sm-2 control-label">评论设置<i class="fa fa-question-circle" data-toggle="tptip" title="文章评论功能是否打开" ></i></label>
                 <div class="col-sm-10 col-md-4">
                     <select name="s_comment" class="selectpicker">
                         <option value="1" selected>打开评论</option>
@@ -59,7 +59,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">收藏设置<i class="fa fa-question-circle" data-toggle="popover" title="提示" data-content="文章是否被其他用户收藏" data-placement="top" data-container="form" data-trigger="hover"></i></label>
+                <label class="col-sm-2 control-label">收藏设置<i class="fa fa-question-circle" data-toggle="tptip" title="文章是否被其他用户收藏"></i></label>
                 <div class="col-sm-10 col-md-4">
                     <select name="s_store" class="selectpicker">
                         <option value="1" selected>可收藏</option>
@@ -68,7 +68,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">阅读需登陆<i class="fa fa-question-circle" data-toggle="popover" title="提示" data-content="是否需要登录才可阅读文章" data-placement="top" data-container="form" data-trigger="hover"></i></label>
+                <label class="col-sm-2 control-label">阅读需登陆<i class="fa fa-question-circle" data-toggle="tptip" title="是否需要登录才可阅读文章"></i></label>
                 <div class="col-sm-10 col-md-4">
                     <select name="s_login" class="selectpicker">
                         <option value="1" selected>不需要</option>
@@ -113,6 +113,7 @@
 <script type="text/javascript" src="{{ asset('js/ueditor/ueditor.all.min.js') }}"></script>
 <script type="text/javascript">
   $(function(){
+    $('*[data-toggle=popover]').popover();
     if(typeof UE != 'undefined') {
       var ue = UE.getEditor('container');
     }

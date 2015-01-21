@@ -23,7 +23,9 @@ Route::group(array('prefix'=>'test'),function(){
     });
 
     Route::get('role/{id?}',function(){
-        //dd(Route::getRoutes());
+        pf(Request::segments());
+
+        dd(Route::getPrefix());
         dd(Request::method());
     });
 });
